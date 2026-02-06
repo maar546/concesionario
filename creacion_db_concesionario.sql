@@ -9,9 +9,9 @@ USE concesionario;
 CREATE TABLE IF NOT EXISTS coche (
 	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 	matricula VARCHAR(7) UNIQUE NOT NULL,
-	marca VARCHAR(15) NOT NULL,
+	marca VARCHAR(15),
 	modelo VARCHAR(15),
-	precio_base FLOAT,
+	precio_base FLOAT NOT NULL,
 	ultima_revision DATE
 );
 
@@ -31,8 +31,9 @@ CREATE TABLE IF NOT EXISTS cliente (
 CREATE TABLE IF NOT EXISTS venta (
 	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 	codigo_factura VARCHAR(6) NOT NULL,
-	fecha_venta DATE NOT NULL,
-	precio_final INT,
+	fecha_venta DATE,
+	precio_final INT NOT NULL,
+	garantia INT,
 	es_financiado BOOLEAN DEFAULT FALSE,
 	id_coche INT UNSIGNED NOT NULL,
 	FOREIGN KEY (id_coche) REFERENCES coche(id) ON DELETE CASCADE,
