@@ -6,17 +6,14 @@ import java.sql.SQLException;
 
 public class DbConnection {
 
-    public static void main(String[] args) {
+    private static final String URL = "jdbc:mariadb://localhost:3306/concesionario";
+    private static final String user = "root";
+    private static final String password = "1234";
 
-        String url = "jdbc:mariadb://localhost:3306/concesionario";
-        String usuario = "root";
-        String password = "";
-
-        try (Connection conexion = DriverManager.getConnection(url, usuario, password)) {
-            System.out.println("Conexión exitosa a MariaDB");
-        } catch (SQLException e) {
-            System.out.println("Error de conexión");
-            e.printStackTrace();
-        }
+    /**
+     * Devuelve una conexión activa a la base de datos MariaDB
+     */
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(URL, user, password);
     }
 }

@@ -1,5 +1,7 @@
 package com.svalero.practicasfeb.controller;
 
+import com.svalero.practicasfeb.model.Car;
+import com.svalero.practicasfeb.repository.CarDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -23,7 +25,7 @@ public class CarController {
         String marca = tfMarca.getText();
         String modelo = tfModelo.getText();
         String precioBaseStr = tfPrecioBase.getText();
-        LocalDate digital = dpUltimaRevision.getValue();
+        LocalDate ultima_revision = dpUltimaRevision.getValue();
 
         // Validación de campos obligatorios
         boolean error = false;
@@ -36,13 +38,23 @@ public class CarController {
         try {
             float precioBase = Float.parseFloat(precioBaseStr);
 
-            // TODO AÑADIR EL METODO DE REGISTRAR
+            // USAR EL CONSTRUCTOR CON PARÁMETROS (La clave de la verdad)
+            Car newCar = new Car(matricula, marca, modelo, precioBase, ultima_revision);
+
+            // INSTANCIAR EL DAO (No es estático)
+            CarDAO carDAO = new CarDAO();
+            carDAO.save(newCar);
 
             lbAvisoCoche.setText("Car registration completed");
             limpiarCamposCoche();
 
         } catch (NumberFormatException e) {
             lbAvisoPrecio.setText("Error: Starting Price need to be a number");
+        } catch (Exception e) {
+            // ESTO ES LO QUE TE FALTA PARA QUE COMPILE
+            // Aquí capturamos el "throws Exception" que declaraste en CarDAO
+            e.printStackTrace();
+            lbAvisoCoche.setText("Error: Database operation failed");
         }
     }
 

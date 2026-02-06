@@ -40,11 +40,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      prefHeight="600.0" prefWidth="900.0"
-      xmlns="http://javafx.com/javafx/21"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.svalero.practicasfeb.controller.MainController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.svalero.practicasfeb.controller.MainController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -58,8 +54,8 @@
         <Menu mnemonicParsing="false" text="Entities">
           <items>
             <MenuItem fx:id="menuCoche" mnemonicParsing="false" onAction="#verCarView" text="Car" />
-                  <MenuItem mnemonicParsing="false" text="Customer" />
-                  <MenuItem mnemonicParsing="false" text="Sell" />
+                  <MenuItem fx:id="menunCustomer" mnemonicParsing="false" onAction="#verCustomerView" text="Customer" />
+                  <MenuItem fx:id="menuSell" mnemonicParsing="false" onAction="#verSellView" text="Sell" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="View">
