@@ -3,6 +3,7 @@ package com.svalero.practicasfeb.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -10,52 +11,81 @@ import java.time.LocalDate;
 
 public class CarController {
 
-    @FXML private TextField tfMatricula, tfMarca, tfModelo, tfPrecioBase, tfUltimaRevision;
-    @FXML private Label lbAvisoMatricula, lbAvisoMarca;
+    @FXML private TextField tfMatricula, tfMarca, tfModelo, tfPrecioBase;
+    @FXML private DatePicker dpUltimaRevision;
+    @FXML private Label lbAvisoMatricula, lbAvisoMarca, lbAvisoPrecio, lbAvisoCoche;
     @FXML private Button btnRegistrarCoche, btnModificarCoche, btnEliminarCoche;
 
     @FXML
     public void registrarCoche(ActionEvent event) {
+
         // TODO CAMBIAR Y ADAPTAR PARA NUESTRO TRABAJO
-        String matricula = tfTitulo.getText();
-        String marca = tfPrecio.getText();
-        String modelo = tfGenero.getText();
-        float precioBase = dpFecha.getValue();
-        LocalDate digital = cbDigital.isSelected();
+
+        String matricula = tfMatricula.getText();
+        String marca = tfMarca.getText();
+        String modelo = tfModelo.getText();
+        String precioBaseStr = tfPrecioBase.getText();
+        LocalDate digital = dpUltimaRevision.getValue();
 
         // Validación de campos obligatorios
-        if (titulo.isEmpty() || precioStr.isEmpty()) {
-            lbStatusV.setText("Error: Título y Precio son obligatorios");
+        if (matricula.isEmpty() || marca.isEmpty()) || precioBaseStr.isEmpty(){
+            lbAvisoMatricula.setText("Error: License plate is mandatory");
+            lbAvisoMarca.setText("Error: Mark is mandatory");
+            lbAvisoPrecio.setText("Error: Starting Price is mandatory");
             return;
         }
 
         try {
-            float precio = Float.parseFloat(precioStr);
-            Videojuego nuevoV = new Videojuego(titulo, precio, genero, fecha, digital);
+            float precioBase = Float.parseFloat(precioBaseStr);
 
-            // Al estar envuelta, se actualiza la tabla (UI) y el repositorio a la vez.
-            listaVideojuegos.add(nuevoV);
+            // TODO AÑADIR EL METODO DE REGISTRAR
 
-            lbStatusV.setText("Videojuego registrado correctamente");
-            limpiarCamposVideojuego();
+            lbAvisoCoche.setText("Car registration completed");
+            limpiarCamposCoche();
+
         } catch (NumberFormatException e) {
-            lbStatusV.setText("Error: El precio debe ser un número");
+            lbAvisoPrecio.setText("Error: Starting Price need to be a number");
         }
     }
 
     @FXML
     public void modificarCoche(ActionEvent event) {
-        // TODO HACER EL METODO
+
+        // TODO Obtener datos a modificar
+
+
+        // TODO Validar que ha seleccionado algo
+
     }
 
     @FXML
     public void eliminarCoche(ActionEvent event) {
         // TODO HACER EL METODO
+        // TODO Obtener datos a eliminar
+
+        // TODO Verificación de selección
+
+        // TODO Borrar de la BBDD
+
+        lbAvisoCoche.setText("Car deleted");
+        limpiarCamposCoche();
+    }
+
+    // Borrar todos los campos
+    private void limpiarCamposCoche() {
+        tfMatricula.clear();
+        tfMarca.clear();
+        tfModelo.clear();
+        tfPrecioBase.clear();
+        dpUltimaRevision.setValue(null);
+
+        btnModificarCoche.setDisable(true);
+        btnEliminarCoche.setDisable(true);
     }
 
     @FXML
     public void initialize() {
-        // Limpiamos todo
+        // Limpieza de avisos
         lbAvisoMatricula.setText("");
         lbAvisoMarca.setText("");
     }

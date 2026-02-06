@@ -34,10 +34,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -47,32 +45,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.svalero.practicasfeb.controller.CarController">
   <children>
-    <MenuBar VBox.vgrow="NEVER">
-      <menus>
-        <Menu mnemonicParsing="false" text="File">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Import" />
-            <MenuItem mnemonicParsing="false" text="Export" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Entities">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Car" />
-                  <MenuItem mnemonicParsing="false" text="Customer" />
-                  <MenuItem mnemonicParsing="false" text="Sell" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="View">
-          <items>
-            <MenuItem mnemonicParsing="false" text="TableView" />
-            <MenuItem mnemonicParsing="false" text="Stadistics" />
-          </items>
-        </Menu>
-      </menus>
-    </MenuBar>
     <AnchorPane fx:id="areaContenido" maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
             <GridPane gridLinesVisible="true" layoutX="23.0" layoutY="14.0" prefHeight="430.0" prefWidth="854.0" style="-fx-background-color: 200;">
@@ -172,33 +146,35 @@
                         <Insets left="50.0" right="50.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="tfUltimaRevision" alignment="CENTER" promptText="0000XXX" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
+                  <Label fx:id="lbAvisoMatricula" alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" prefHeight="15.0" prefWidth="541.0" textFill="RED" GridPane.columnIndex="1">
                      <font>
-                        <Font size="15.0" />
+                        <Font size="10.0" />
                      </font>
+                     <GridPane.margin>
+                        <Insets top="50.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="lbAvisoMarca" alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" prefHeight="17.0" prefWidth="541.0" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets top="50.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="lbAvisoPrecio" alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" prefHeight="17.0" prefWidth="541.0" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets top="50.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <DatePicker fx:id="dpUltimaRevision" prefHeight="26.0" prefWidth="462.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <GridPane.margin>
                         <Insets left="50.0" right="50.0" />
                      </GridPane.margin>
-                  </TextField>
-                  <Label fx:id="lbAvisoMatricula" alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" prefHeight="15.0" prefWidth="541.0" text="label" textFill="RED" GridPane.columnIndex="1">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets top="50.0" />
-                     </GridPane.margin>
-                  </Label>
-                  <Label fx:id="lbAvisoMarca" alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" prefHeight="17.0" prefWidth="541.0" text="label" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets top="50.0" />
-                     </GridPane.margin>
-                  </Label>
+                  </DatePicker>
                </children>
                <padding>
                   <Insets bottom="10.0" left="50.0" right="50.0" top="50.0" />
@@ -240,12 +216,12 @@
                         <Insets />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="btnModificarCoche" mnemonicParsing="false" onAction="#modificarCoche" text="Modify">
+                  <Button fx:id="btnModificarCoche" disable="true" mnemonicParsing="false" onAction="#modificarCoche" text="Modify">
                      <HBox.margin>
                         <Insets left="50.0" right="50.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="btnEliminarCoche" mnemonicParsing="false" onAction="#eliminarCoche" text="Delete">
+                  <Button fx:id="btnEliminarCoche" disable="true" mnemonicParsing="false" onAction="#eliminarCoche" text="Delete">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -255,6 +231,11 @@
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="6.0" prefHeight="18.0" prefWidth="892.0" text="CAR" textAlignment="CENTER" textFill="#0000c8" underline="true">
                <font>
                   <Font name="Arial Black" size="40.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbAvisoCoche" layoutX="74.0" layoutY="444.0" prefHeight="18.0" prefWidth="752.0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
                </font>
             </Label>
       </children>
