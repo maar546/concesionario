@@ -19,8 +19,6 @@ public class CarController {
     @FXML
     public void registrarCoche(ActionEvent event) {
 
-        // TODO CAMBIAR Y ADAPTAR PARA NUESTRO TRABAJO
-
         String matricula = tfMatricula.getText();
         String marca = tfMarca.getText();
         String modelo = tfModelo.getText();
@@ -28,12 +26,12 @@ public class CarController {
         LocalDate digital = dpUltimaRevision.getValue();
 
         // Validación de campos obligatorios
-        if (matricula.isEmpty() || marca.isEmpty()) || precioBaseStr.isEmpty(){
-            lbAvisoMatricula.setText("Error: License plate is mandatory");
-            lbAvisoMarca.setText("Error: Mark is mandatory");
-            lbAvisoPrecio.setText("Error: Starting Price is mandatory");
-            return;
-        }
+        boolean error = false;
+        if (matricula.isEmpty()) { lbAvisoMatricula.setText("Error: License plate is mandatory"); error = true; }
+        if (marca.isEmpty()) { lbAvisoMarca.setText("Error: Mark is mandatory"); error = true; }
+        if (precioBaseStr.isEmpty()) { lbAvisoPrecio.setText("Error: Starting Price is mandatory"); error = true; }
+
+        if (error) return;
 
         try {
             float precioBase = Float.parseFloat(precioBaseStr);
