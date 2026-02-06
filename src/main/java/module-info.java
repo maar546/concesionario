@@ -5,6 +5,8 @@ module com.svalero.practicasfeb {
     requires java.sql;
     requires javafx.base;
 
+    opens com.svalero.practicasfeb.controller to javafx.fxml;
+
     opens com.svalero.practicasfeb to javafx.fxml;
     exports com.svalero.practicasfeb;
 }
