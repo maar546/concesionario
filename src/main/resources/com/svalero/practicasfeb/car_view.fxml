@@ -73,7 +73,7 @@
         </Menu>
       </menus>
     </MenuBar>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <AnchorPane fx:id="areaContenido" maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
             <GridPane gridLinesVisible="true" layoutX="23.0" layoutY="14.0" prefHeight="430.0" prefWidth="854.0" style="-fx-background-color: 200;">
               <columnConstraints>
@@ -88,7 +88,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="30.0" prefWidth="375.0" text="LICENSE PLATE" textAlignment="CENTER">
+                  <Label fx:id="lbMatricula" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="30.0" prefWidth="375.0" text="LICENSE PLATE" textAlignment="CENTER">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -96,7 +96,7 @@
                         <Insets right="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="30.0" prefWidth="375.0" text="MAKE" textAlignment="CENTER" GridPane.rowIndex="1">
+                  <Label fx:id="lbMarca" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="30.0" prefWidth="375.0" text="MAKE" textAlignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -104,7 +104,7 @@
                         <Insets right="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="30.0" prefWidth="375.0" text="MODEL" textAlignment="CENTER" GridPane.rowIndex="2">
+                  <Label fx:id="lbModelo" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="30.0" prefWidth="375.0" text="MODEL" textAlignment="CENTER" GridPane.rowIndex="2">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -112,7 +112,7 @@
                         <Insets right="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="30.0" prefWidth="375.0" text="STARTING PRICE" textAlignment="CENTER" GridPane.rowIndex="3">
+                  <Label fx:id="lbPrecioBase" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="30.0" prefWidth="375.0" text="STARTING PRICE" textAlignment="CENTER" GridPane.rowIndex="3">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -120,7 +120,7 @@
                         <Insets right="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="30.0" prefWidth="375.0" text="LAST SERVICE" textAlignment="CENTER" GridPane.rowIndex="4">
+                  <Label fx:id="lbUltimaRevision" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="30.0" prefWidth="375.0" text="LAST SERVICE" textAlignment="CENTER" GridPane.rowIndex="4">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -128,7 +128,7 @@
                         <Insets right="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <TextField alignment="CENTER" prefWidth="348.0" promptText="0000XXX" GridPane.columnIndex="1">
+                  <TextField fx:id="tfMatricula" alignment="CENTER" prefWidth="348.0" promptText="0000XXX" GridPane.columnIndex="1">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -139,7 +139,7 @@
                         <Font size="15.0" />
                      </font>
                   </TextField>
-                  <TextField alignment="CENTER" promptText="0000XXX" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="tfMarca" alignment="CENTER" promptText="0000XXX" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -150,7 +150,7 @@
                         <Insets left="50.0" right="50.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField alignment="CENTER" promptText="0000XXX" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField fx:id="tfModelo" alignment="CENTER" promptText="0000XXX" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -161,7 +161,7 @@
                         <Insets left="50.0" right="50.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField alignment="CENTER" promptText="0000XXX" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <TextField fx:id="tfPrecioBase" alignment="CENTER" promptText="0000XXX" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -172,7 +172,7 @@
                         <Insets left="50.0" right="50.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField alignment="CENTER" promptText="0000XXX" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                  <TextField fx:id="tfUltimaRevision" alignment="CENTER" promptText="0000XXX" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -183,7 +183,7 @@
                         <Insets left="50.0" right="50.0" />
                      </GridPane.margin>
                   </TextField>
-                  <Label alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" prefHeight="15.0" prefWidth="541.0" text="label" textFill="RED" GridPane.columnIndex="1">
+                  <Label fx:id="lbAvisoMatricula" alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" prefHeight="15.0" prefWidth="541.0" text="label" textFill="RED" GridPane.columnIndex="1">
                      <font>
                         <Font size="10.0" />
                      </font>
@@ -191,7 +191,7 @@
                         <Insets top="50.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" prefHeight="17.0" prefWidth="541.0" text="label" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Label fx:id="lbAvisoMarca" alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" prefHeight="17.0" prefWidth="541.0" text="label" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font size="10.0" />
                      </font>
@@ -233,19 +233,19 @@
                   </Button>
                </children>
             </HBox>
-            <HBox layoutX="338.0" layoutY="519.0" prefHeight="26.0" prefWidth="234.0">
+            <HBox layoutX="328.0" layoutY="519.0" prefHeight="26.0" prefWidth="254.0">
                <children>
-                  <Button mnemonicParsing="false" text="New">
+                  <Button fx:id="btnRegistrarCoche" mnemonicParsing="false" onAction="#registrarCoche" text="New">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" text="Save">
+                  <Button fx:id="btnModificarCoche" mnemonicParsing="false" onAction="#modificarCoche" text="Modify">
                      <HBox.margin>
                         <Insets left="50.0" right="50.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" text="Delete">
+                  <Button fx:id="btnEliminarCoche" mnemonicParsing="false" onAction="#eliminarCoche" text="Delete">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
