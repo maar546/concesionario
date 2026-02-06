@@ -46,7 +46,7 @@ public class CarController {
             carDAO.save(newCar);
 
             lbAvisoCoche.setText("Car registration completed");
-            limpiarCamposCoche();
+            //limpiarCamposCoche();
 
         } catch (NumberFormatException e) {
             lbAvisoPrecio.setText("Error: Starting Price need to be a number");
@@ -82,13 +82,15 @@ public class CarController {
     }
 
     // Borrar todos los campos
-    private void limpiarCamposCoche() {
+    @FXML
+    public void limpiarCamposCoche() {
         tfMatricula.clear();
         tfMarca.clear();
         tfModelo.clear();
         tfPrecioBase.clear();
         dpUltimaRevision.setValue(null);
 
+        btnRegistrarCoche.setDisable(false);
         btnModificarCoche.setDisable(true);
         btnEliminarCoche.setDisable(true);
     }

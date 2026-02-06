@@ -35,9 +35,6 @@ public class CarDAO {
                 ps.setNull(5, java.sql.Types.DATE);
             }
 
-
-            //ps.setDate(5, java.sql.Date.valueOf(car.getUltimaRevision()));
-
             System.out.println("Intentando guardar coche...");
 
             ps.executeUpdate();

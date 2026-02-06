@@ -24,7 +24,8 @@ public class SellController {
     }
 
     // Borrar todos los campos
-    private void limpiarCamposSell() {
+    @FXML
+    public void limpiarCamposSell() {
         // TODO
     }
 

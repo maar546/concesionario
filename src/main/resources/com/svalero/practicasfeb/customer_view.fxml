@@ -209,11 +209,16 @@
                   </Button>
                </children>
             </HBox>
-            <HBox layoutX="328.0" layoutY="519.0" prefHeight="26.0" prefWidth="254.0">
+            <HBox layoutX="248.0" layoutY="519.0" prefHeight="26.0" prefWidth="414.0">
                <children>
-                  <Button fx:id="btnRegistrarCustomer" mnemonicParsing="false" onAction="#registrarCustomer" text="New">
+                  <Button fx:id="btnLimpiarCustomer" mnemonicParsing="false" onAction="#limpiarCamposCustomer" text="New">
                      <HBox.margin>
-                        <Insets />
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="btnRegistrarCustomer" disable="true" mnemonicParsing="false" onAction="#registrarCustomer" text="Save">
+                     <HBox.margin>
+                        <Insets left="50.0" />
                      </HBox.margin>
                   </Button>
                   <Button fx:id="btnModificarCustomer" disable="true" mnemonicParsing="false" onAction="#modificarCustomer" text="Modify">

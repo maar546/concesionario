@@ -209,11 +209,16 @@
                   </Button>
                </children>
             </HBox>
-            <HBox layoutX="328.0" layoutY="519.0" prefHeight="26.0" prefWidth="254.0">
+            <HBox layoutX="230.0" layoutY="519.0" prefHeight="26.0" prefWidth="440.0">
                <children>
-                  <Button fx:id="btnRegistrarCoche" mnemonicParsing="false" onAction="#registrarCoche" text="New">
+                  <Button fx:id="btnLimpiarCoche" mnemonicParsing="false" onAction="#limpiarCamposCoche" text="New">
                      <HBox.margin>
                         <Insets />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="btnRegistrarCoche" disable="true" mnemonicParsing="false" onAction="#registrarCoche" text="Save">
+                     <HBox.margin>
+                        <Insets left="50.0" />
                      </HBox.margin>
                   </Button>
                   <Button fx:id="btnModificarCoche" disable="true" mnemonicParsing="false" onAction="#modificarCoche" text="Modify">
@@ -221,12 +226,18 @@
                         <Insets left="50.0" right="50.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="btnEliminarCoche" disable="true" mnemonicParsing="false" onAction="#eliminarCoche" text="Delete">
+                  <Button fx:id="btnEliminarCoche" disable="true" mnemonicParsing="false" onAction="#eliminarCoche" text="Delete" textAlignment="CENTER">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                   </Button>
                </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="50.0" right="50.0" />
+               </padding>
             </HBox>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="6.0" prefHeight="18.0" prefWidth="892.0" text="CAR" textAlignment="CENTER" textFill="#0000c8" underline="true">
                <font>

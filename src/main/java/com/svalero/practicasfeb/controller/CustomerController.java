@@ -24,7 +24,8 @@ public class CustomerController {
     }
 
     // Borrar todos los campos
-    private void limpiarCamposCustomer() {
+    @FXML
+    public void limpiarCamposCustomer() {
         // TODO
     }
 
