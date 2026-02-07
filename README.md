@@ -12,7 +12,9 @@ La aplicación dispone de una interfaz gráfica en JavaFX que permite gestionar 
 
 ## Tecnologías utilizadas.
 Para el desarrollo de la aplicación hemos utilizado las siguientes tecnologías:
+
 ● Java como lenguaje principal de programación.
+
 ● JavaFX para la creación de la interfaz gráfica de usuario.
 ● MariaDB como sistema gestor de bases de datos relacional.
 ● JDBC para la conexión entre la aplicación Java y la base de datos.
