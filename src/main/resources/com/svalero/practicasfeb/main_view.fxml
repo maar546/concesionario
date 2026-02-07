@@ -46,21 +46,19 @@
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
-            <MenuItem mnemonicParsing="false" text="Import" />
-            <MenuItem mnemonicParsing="false" onAction="#exportData" text="Export" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
+            <MenuItem fx:id="menuExportar" mnemonicParsing="false" onAction="#exportData" text="Export" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Entities">
           <items>
             <MenuItem fx:id="menuCoche" mnemonicParsing="false" onAction="#verCarView" text="Car" />
                   <MenuItem fx:id="menunCustomer" mnemonicParsing="false" onAction="#verCustomerView" text="Customer" />
-                  <MenuItem fx:id="menuSell" mnemonicParsing="false" onAction="#verSellView" text="Sell" />
+                  <MenuItem fx:id="menuSell" mnemonicParsing="false" onAction="#verSellView" text="Sale" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="View">
           <items>
-            <MenuItem mnemonicParsing="false" text="TableView" />
+            <MenuItem fx:id="menuTableview" mnemonicParsing="false" onAction="#verTableView" text="TableView" />
             <MenuItem mnemonicParsing="false" text="Stadistics" />
           </items>
         </Menu>
@@ -68,14 +66,14 @@
     </MenuBar>
     <AnchorPane fx:id="areaContenido" maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="6.0" prefHeight="242.0" prefWidth="892.0" text="CAR DEALER - SVALERO" textAlignment="CENTER" textFill="#0000c8" underline="true">
-               <font>
-                  <Font name="Arial Black" size="40.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutY="217.0" prefHeight="266.0" prefWidth="900.0" text="Choose an entity from the menu above" textAlignment="CENTER" textOverrun="CLIP">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutY="39.0" prefHeight="109.0" prefWidth="900.0" text="Welcome to the" textAlignment="CENTER" textOverrun="CLIP">
                <font>
                   <Font name="Arial Black" size="22.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="164.0" prefHeight="191.0" prefWidth="892.0" text="CAR DEALER - SVALERO" textAlignment="CENTER" textFill="#0000c8" underline="true">
+               <font>
+                  <Font name="Arial Black" size="40.0" />
                </font>
             </Label>
       </children>
