@@ -8,6 +8,6 @@ module com.svalero.practicasfeb {
 
     opens com.svalero.practicasfeb.controller to javafx.fxml;
     opens com.svalero.practicasfeb to javafx.fxml;
-    opens com.svalero.practicasfeb.model to com.fasterxml.jackson.databind;
+    opens com.svalero.practicasfeb.model to com.fasterxml.jackson.databind, javafx.base;
     exports com.svalero.practicasfeb;
 }
