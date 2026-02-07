@@ -39,9 +39,12 @@ public class SaleController {
         if (error) return;
 
             try {
+
+                int garantia;
+                garantia = Integer.parseInt(garantiaStr);
                 float precioFinal = Float.parseFloat(precioFinalStr);
 
-                Sale newSale = new Sale(codigofactura, fechaVenta, precioFinalStr, garantiaStr, esFinanciado);
+                Sale newSale = new Sale(codigofactura, fechaVenta, precioFinal, garantia, esFinanciado);
                 saleDAO.save(newSale);
                 lbAvisoSale.setText("Sale registration completed");
                 btnRegistrarSale.setDisable(true);
@@ -74,13 +77,16 @@ public class SaleController {
         if (error) return;
 
         try {
+            int garantia;
+            garantia = Integer.parseInt(garantiaStr);
+
             float precioFinal = Float.parseFloat(precioFinalStr);
 
             if (precioFinal <0) {
                 lbAvisoPrecioFinal.setText("Error: Price cannot be negativa");
                 return;
             }
-            Sale saleModificado = new Sale(codigofactura, fechaVenta, precioFinalStr, garantiaStr, esFinanciado);
+            Sale saleModificado = new Sale(codigofactura, fechaVenta, precioFinal, garantia, esFinanciado);
             saleDAO.update(saleModificado);
 
             lbAvisoSale.setText("Sale updated");
@@ -127,14 +133,14 @@ public class SaleController {
 
             tfPrecioFinal.clear();
             tfGarantia.clear();
-            cbEsFinanciado.clear();
+            cbEsFinanciado.setSelected(false);
             dpFechaVenta.setValue(null);
 
             btnRegistrarSale.setDisable(false);
             btnModificarSale.setDisable(true);
             btnEliminarSale.setDisable(true);
-        }
     }
+
 
     // MAPEO GENERAL
         private List<Sale> listaSale;
@@ -152,12 +158,12 @@ public class SaleController {
     private void mostrarSale(int indice) {
         Sale sale = listaSale.get(indice);
 
-        tfNumeroFactura.setText(sale.getNumeroFactura());
+        tfNumeroFactura.setText(sale.getCodigoFactura());
         tfNumeroFactura.setEditable(false); // para no poder modificar la factura
 
-        tfPrecioFinal.setText(sale.getPrecioFinal());
-        tfGarantia.setText(sale.getGarantia());
-        cbEsFinanciado.setSelected(sale.getEsFinanciado());
+        tfPrecioFinal.setText(String.valueOf(sale.getPrecioFinal()));
+        tfGarantia.setText(String.valueOf(sale.getGarantia()));
+        cbEsFinanciado.setSelected(sale.isFinanciado());
         dpFechaVenta.setValue(sale.getFechaVenta());
 
         // ACTUALIZAR CONTADOR

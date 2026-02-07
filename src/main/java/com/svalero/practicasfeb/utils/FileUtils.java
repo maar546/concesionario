@@ -1,9 +1,13 @@
 package com.svalero.practicasfeb.utils;
 
 import com.svalero.practicasfeb.model.Car;
+import com.svalero.practicasfeb.model.Customer;
 import com.svalero.practicasfeb.model.DataStore;
 import com.svalero.practicasfeb.repository.CarDAO;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.svalero.practicasfeb.repository.CustomerDAO;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
 import java.io.*;
@@ -16,13 +20,20 @@ public class FileUtils {
 
     private static final String FILE_NAME = "datos_concesionario.dat";
 
+    // Configuramos el Mapper UNA SOLA VEZ con soporte para Java 8 (LocalDate)
+    private static final ObjectMapper mapper = new ObjectMapper()
+            .registerModule(new JavaTimeModule())
+            .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
+            .enable(SerializationFeature.INDENT_OUTPUT);
+
     // Guarda las 3 listas en 1 archivo
     public static void guardarTodo() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
 
             DataStore mochila = new DataStore();
             mochila.cars = CarDAO.cars;
-            // TODO añadir las mochilas de CUSTOMER y lista SALE para sincronizar con BBDD
+            mochila.customers = CustomerDAO.customers;
+        // TODO añadir las mochilas lista SALE para sincronizar con BBDD
 
             oos.writeObject(mochila);
 
@@ -40,15 +51,13 @@ public class FileUtils {
 
             DataStore mochila = (DataStore) ois.readObject();
             CarDAO.cars = mochila.cars;
-            // TODO añadir las mochilas de CUSTOMER y lista SALE para sincronizar con la BBDD
+            CustomerDAO.customers = mochila.customers;
+            // TODO añadir las mochilas lista SALE para sincronizar con la BBDD
 
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
-
-    private static final ObjectMapper mapper = new ObjectMapper()
-            .enable(SerializationFeature.INDENT_OUTPUT);
 
     public static <T> void exportToJson(List<T> data, String fileName) {
         try {
@@ -58,5 +67,5 @@ public class FileUtils {
             System.err.println("Error al exportar datos: " + e.getMessage());
         }
     }
-
 }
+

@@ -1,0 +1,19 @@
+[ {
+  "matricula" : "3333ccc",
+  "marca" : "OPEL",
+  "modelo" : "focus",
+  "precioBase" : 5.0,
+  "ultimaRevision" : "2026-02-22"
+}, {
+  "matricula" : "9999ooo",
+  "marca" : "luna",
+  "modelo" : "",
+  "precioBase" : 6.0,
+  "ultimaRevision" : null
+}, {
+  "matricula" : "4444aaa",
+  "marca" : "kia",
+  "modelo" : "",
+  "precioBase" : 6.0,
+  "ultimaRevision" : null
+} ]

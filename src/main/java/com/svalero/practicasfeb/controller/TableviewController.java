@@ -2,8 +2,8 @@ package com.svalero.practicasfeb.controller;
 
 import com.svalero.practicasfeb.model.Car;
 import com.svalero.practicasfeb.model.Customer;
-import com.svalero.practicasfeb.model.Sale;
 import com.svalero.practicasfeb.repository.CarDAO;
+import com.svalero.practicasfeb.repository.CustomerDAO;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import java.time.LocalDate;
@@ -18,8 +18,8 @@ public class TableviewController {
 
     // DAOs para acceder a MariaDB
     private final CarDAO carDAO = new CarDAO();
-    private final CustomerDAO clientDAO = new CustomerDAO();
-    private final SaleDAO saleDAO = new SaleDAO();
+    private final CustomerDAO customerDAO = new CustomerDAO();
+    // private final SaleDAO saleDAO = new SaleDAO();
 
     // Tabla de Coches
     @FXML private TableView<Car> tvCoches;
@@ -38,12 +38,12 @@ public class TableviewController {
     @FXML private TableColumn<Customer, LocalDate> colFechaAlta;
 
     // Tabla de Sales
-    @FXML private TableView<Sale> tvSales;
-    @FXML private TableColumn<Sale, String> colNumeroFactura;
-    @FXML private TableColumn<Sale, LocalDate> colFechaVenta;
-    @FXML private TableColumn<Sale, Float> colPrecioFinal;
-    @FXML private TableColumn<Sale, Integer> colGarantia;
-    @FXML private TableColumn<Sale, Boolean> colEsFinanciado;
+    // @FXML private TableView<Sale> tvSales;
+    // @FXML private TableColumn<Sale, String> colNumeroFactura;
+    // @FXML private TableColumn<Sale, LocalDate> colFechaVenta;
+    // @FXML private TableColumn<Sale, Float> colPrecioFinal;
+    // @FXML private TableColumn<Sale, Integer> colGarantia;
+    // @FXML private TableColumn<Sale, Boolean> colEsFinanciado;
 
     @FXML
     public void initialize() {
@@ -68,11 +68,11 @@ public class TableviewController {
         colEsPremium.setCellValueFactory(new PropertyValueFactory<>("esPremium"));
         colFechaAlta.setCellValueFactory(new PropertyValueFactory<>("fechaAlta"));
 
-        colNumeroFactura.setCellValueFactory(new PropertyValueFactory<>("codigoFactura"));
-        colFechaVenta.setCellValueFactory(new PropertyValueFactory<>("fechaVenta"));
-        colPrecioFinal.setCellValueFactory(new PropertyValueFactory<>("precioFinal"));
-        colGarantia.setCellValueFactory(new PropertyValueFactory<>("garantia"));
-        colEsFinanciado.setCellValueFactory(new PropertyValueFactory<>("esFinanciado"));
+        // colNumeroFactura.setCellValueFactory(new PropertyValueFactory<>("codigoFactura"));
+        // colFechaVenta.setCellValueFactory(new PropertyValueFactory<>("fechaVenta"));
+        // colPrecioFinal.setCellValueFactory(new PropertyValueFactory<>("precioFinal"));
+        // colGarantia.setCellValueFactory(new PropertyValueFactory<>("garantia"));
+        // colEsFinanciado.setCellValueFactory(new PropertyValueFactory<>("esFinanciado"));
     }
 
     private void cargarDatosDesdeBD() {
@@ -80,7 +80,7 @@ public class TableviewController {
             // Persistencia transparente: carga automática al abrir la vista
             tvCoches.setItems(FXCollections.observableArrayList(carDAO.findAll()));
             tvCustomers.setItems(FXCollections.observableArrayList(customerDAO.findAll()));
-            tvSales.setItems(FXCollections.observableArrayList(saleDAO.findAll()));
+            // tvSales.setItems(FXCollections.observableArrayList(saleDAO.findAll()));
 
             tvCoches.refresh(); // Forzar dibujado
         } catch (Exception e) {

@@ -17,7 +17,7 @@ public class CustomerDAO {
     public void save(Customer customer) throws Exception {
 
         String sql = """
-            INSERT INTO coche (dni, nombre, edad, esPremium, fechaAlta)
+            INSERT INTO cliente (dni, nombre, edad, es_premium, fecha_alta)
             VALUES (?, ?, ?, ?, ?)
         """;
 
@@ -45,7 +45,7 @@ public class CustomerDAO {
 
         String sql = """
                 UPDATE cliente
-                SET nombre = ?, edad = ?, esPremium = ?, fechaAlta = ?
+                SET nombre = ?, edad = ?, es_premium = ?, fecha_alta = ?
                 WHERE dni = ?
         """;
 
@@ -122,18 +122,18 @@ public class CustomerDAO {
             while (rs.next()) {
 
                 // Evitar que dé error por fecha null
-                java.sql.Date sqlDate = rs.getDate("fechaAlta");
+                java.sql.Date sqlDate = rs.getDate("fecha_alta");
                 java.time.LocalDate fecha = (sqlDate != null) ? sqlDate.toLocalDate() : null;
 
                 customer.add(new Customer(
-                        rs.getString("dni"),
                         rs.getString("nombre"),
+                        rs.getString("dni"),
                         rs.getInt("edad"),
-                        rs.getBoolean("esPremium"),
+                        rs.getBoolean("es_premium"),
                         fecha
                 ));
             }
         }
-        return customers;
+        return customer;
     }
 }

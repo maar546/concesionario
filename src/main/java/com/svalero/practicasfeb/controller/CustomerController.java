@@ -31,13 +31,16 @@ public class CustomerController {
         // Validación de campos obligatorios
         boolean error = false;
         if (nombre.isEmpty()) {lbAvisoNombre.setText("Error: Name is mandatory");error = true;}
-        if (dni.isEmpty()) {lbAvisoDni.setText("Error: DNI is mandatory");error = true;
+        if (dni.isEmpty()) {lbAvisoDni.setText("Error: DNI is mandatory");error = true;}
 
         if (error) return;
 
         try {
 
-                Customer newCustomer = new Customer(nombre, dni, edadStr, esPremium, fechaAlta);
+            int edad;
+            edad = Integer.parseInt(edadStr);
+
+                Customer newCustomer = new Customer(nombre, dni, edad, esPremium, fechaAlta);
                 customerDAO.save(newCustomer);
                 lbAvisoCustomer.setText("Customer registration completed");
                 btnRegistrarCustomer.setDisable(true);
@@ -48,7 +51,6 @@ public class CustomerController {
             e.printStackTrace();
             lbAvisoCustomer.setText("Error: Database operation failed");
         }
-        }
     }
 
     @FXML
@@ -57,8 +59,8 @@ public class CustomerController {
         String nombre = tfNombre.getText();
         String dni = tfDni.getText();
         String edadStr = tfEdad.getText();
-        Boolean esPremium = cbEsPremium.isSelected();
-        LocalDate fechaAlta = dpFechaAlta.getValue();
+        Boolean es_premium = cbEsPremium.isSelected();
+        LocalDate fecha_alta = dpFechaAlta.getValue();
 
         // Validación de campos obligatorios
         boolean error = false;
@@ -68,12 +70,15 @@ public class CustomerController {
         if (error) return;
 
         try {
-            if (nombre = null ) {
+            int edad;
+            edad = Integer.parseInt(edadStr);
+
+            if (nombre == null ) {
                 lbAvisoNombre.setText("Error: Name can not be empty");
                 return;
             }
 
-            Customer customerModificado = new Customer(nombre, dni, edadStr, esPremium, fechaAlta);
+            Customer customerModificado = new Customer(nombre, dni, edad, es_premium, fecha_alta);
             customerDAO.update(customerModificado);
 
             lbAvisoCustomer.setText("Customer updated");
@@ -92,10 +97,10 @@ public class CustomerController {
     @FXML
     public void eliminarCustomer(ActionEvent event) {
 
-        String nombre = tfNombre.getText();
+        String dni = tfDni.getText().trim();
 
         try {
-            customerDAO.delete(nombre);
+            customerDAO.delete(dni);
             lbAvisoCustomer.setText("Customer deleted");
 
             cargarDatosCustomer();
@@ -119,7 +124,7 @@ public class CustomerController {
 
         tfDni.clear();
         tfEdad.clear();
-        cbEsPremium.clear();
+        cbEsPremium.setSelected(false);
         dpFechaAlta.setValue(null);
 
         btnRegistrarCustomer.setDisable(false);
@@ -146,12 +151,18 @@ public class CustomerController {
         Customer customer = listaCustomer.get(indice);
 
         tfNombre.setText(customer.getNombre());
-        tfNombre.setEditable(false); // para no poder modificar la matrícula
 
         tfDni.setText(customer.getDni());
-        tfEdad.setText(customer.getEdad());
-        cbEsPremium.setSelected(customer.getEsPremium());
+        //tfDni.setEditable(false); // para no poder modificar
+
+        tfEdad.setText(String.valueOf(customer.getEdad()));
+        cbEsPremium.setSelected(customer.isPremium());
         dpFechaAlta.setValue(customer.getFechaAlta());
+
+        // ACTUALIZAR CONTADOR
+        if (lbContadorCustomer != null) {
+            lbContadorCustomer.setText((indice + 1) + " / " + listaCustomer.size());
+        }
     }
 
     // MOSTRAR DATOS EN LA PANTALLA AL ENTRAR EN ENTITY/CUSTOMER
@@ -192,3 +203,4 @@ public class CustomerController {
         }
     }
 }
+
