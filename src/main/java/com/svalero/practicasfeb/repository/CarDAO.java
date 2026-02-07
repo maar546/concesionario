@@ -14,9 +14,9 @@ import java.sql.SQLException;
 
 public class CarDAO {
 
-    public static List<Car> cars;
+    public static List<Car> cars = new ArrayList<>();
 
-    public static void save(Car car) throws Exception {
+    public void save(Car car) throws Exception {
 
         String sql = """
             INSERT INTO coche (matricula, marca, modelo, precio_base, ultima_revision)
@@ -38,6 +38,35 @@ public class CarDAO {
             }
 
             System.out.println("Intentando guardar coche...");
+
+            ps.executeUpdate();
+        }
+    }
+
+    public void update(Car car) throws Exception {
+
+        String sql = """
+                UPDATE coche
+                SET marca = ?, modelo = ?, precio_base = ?, ultima_revision = ?
+                WHERE matricula = ?
+        """;
+
+        try (Connection conn = DbConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, car.getMarca());
+            ps.setString(2, car.getModelo());
+            ps.setFloat(3, car.getPrecioBase());
+
+            if (car.getUltimaRevision() != null) {
+                ps.setDate(4, java.sql.Date.valueOf(car.getUltimaRevision()));
+            } else {
+                ps.setNull(4, java.sql.Types.DATE);
+            }
+
+            ps.setString(5, car.getMatricula());
+
+            System.out.println("Intentando modificar coche...");
 
             ps.executeUpdate();
         }
@@ -66,12 +95,17 @@ public class CarDAO {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
+
+                // Evitar que dé error por fecha null
+                java.sql.Date sqlDate = rs.getDate("ultima_revision");
+                java.time.LocalDate fecha = (sqlDate != null) ? sqlDate.toLocalDate() : null;
+
                 return new Car(
                         rs.getString("matricula"),
                         rs.getString("marca"),
                         rs.getString("modelo"),
                         rs.getFloat("precio_base"),
-                        rs.getDate("ultima_revision").toLocalDate()
+                        fecha
                 );
             }
         }
@@ -88,12 +122,17 @@ public class CarDAO {
              ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
+
+                // Evitar que dé error por fecha null
+                java.sql.Date sqlDate = rs.getDate("ultima_revision");
+                java.time.LocalDate fecha = (sqlDate != null) ? sqlDate.toLocalDate() : null;
+
                 cars.add(new Car(
                         rs.getString("matricula"),
                         rs.getString("marca"),
                         rs.getString("modelo"),
                         rs.getFloat("precio_base"),
-                        rs.getDate("ultima_revision").toLocalDate()
+                        fecha
                 ));
             }
         }
