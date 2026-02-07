@@ -1,0 +1,19 @@
+[ {
+  "nombre" : "PACA",
+  "dni" : "33333333c",
+  "edad" : 17,
+  "fechaAlta" : null,
+  "premium" : false
+}, {
+  "nombre" : "ana",
+  "dni" : "12345555k",
+  "edad" : 6,
+  "fechaAlta" : null,
+  "premium" : false
+}, {
+  "nombre" : "MANUEL",
+  "dni" : "88886666y",
+  "edad" : 32,
+  "fechaAlta" : null,
+  "premium" : true
+} ]
