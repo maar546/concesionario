@@ -16,8 +16,13 @@ Para el desarrollo de la aplicación hemos utilizado las siguientes tecnologías
 ● Java como lenguaje principal de programación.
 
 ● JavaFX para la creación de la interfaz gráfica de usuario.
+
 ● MariaDB como sistema gestor de bases de datos relacional.
+
 ● JDBC para la conexión entre la aplicación Java y la base de datos.
+
 ● Maven para la gestión de dependencias y la estructura del proyecto.
+
 ● IntelliJ IDEA como entorno de desarrollo.
+
 ● Git y GitHub para el control de versiones del proyecto.
