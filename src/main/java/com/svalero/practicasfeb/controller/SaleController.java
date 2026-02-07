@@ -117,6 +117,7 @@ public class SaleController {
             e.printStackTrace();
 
         }
+    }
 
     // Borrar todos los campos
     @FXML
