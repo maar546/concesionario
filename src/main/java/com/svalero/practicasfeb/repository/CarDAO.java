@@ -14,6 +14,8 @@ import java.sql.SQLException;
 
 public class CarDAO {
 
+    public static List<Car> cars;
+
     public static void save(Car car) throws Exception {
 
         String sql = """
@@ -76,7 +78,7 @@ public class CarDAO {
         return null;
     }
 
-    public List<Car> findAll() throws Exception {
+    public static List<Car> findAll() throws Exception {
 
         List<Car> cars = new ArrayList<>();
         String sql = "SELECT * FROM coche";

@@ -3,9 +3,13 @@ package com.svalero.practicasfeb.utils;
 import com.svalero.practicasfeb.model.Car;
 import com.svalero.practicasfeb.model.DataStore;
 import com.svalero.practicasfeb.repository.CarDAO;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public class FileUtils {
@@ -42,4 +46,17 @@ public class FileUtils {
             ex.printStackTrace();
         }
     }
+
+    private static final ObjectMapper mapper = new ObjectMapper()
+            .enable(SerializationFeature.INDENT_OUTPUT);
+
+    public static <T> void exportToJson(List<T> data, String fileName) {
+        try {
+            mapper.writeValue(new File(fileName), data);
+            System.out.println("Datos exportados correctamente a " + fileName);
+        } catch (IOException e) {
+            System.err.println("Error al exportar datos: " + e.getMessage());
+        }
+    }
+
 }
