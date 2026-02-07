@@ -62,7 +62,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label fx:id="lbMatricula" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="30.0" prefWidth="375.0" text="LICENSE PLATE" textAlignment="CENTER">
+                  <Label fx:id="lbMatricula" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="30.0" prefWidth="375.0" text="LICENSE PLATE(*)" textAlignment="CENTER">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -86,7 +86,7 @@
                         <Insets right="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label fx:id="lbPrecioBase" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="30.0" prefWidth="375.0" text="STARTING PRICE" textAlignment="CENTER" GridPane.rowIndex="3">
+                  <Label fx:id="lbPrecioBase" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="30.0" prefWidth="375.0" text="STARTING PRICE(*)" textAlignment="CENTER" GridPane.rowIndex="3">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -182,29 +182,19 @@
             </GridPane>
             <HBox layoutX="248.0" layoutY="476.0" prefHeight="26.0" prefWidth="414.0" AnchorPane.leftAnchor="248.0">
                <children>
-                  <Button mnemonicParsing="false" text="|&lt; First">
+                  <Button fx:id="btnAnteriorCoche" mnemonicParsing="false" onAction="#anteriorCoche" text="&lt;">
                      <HBox.margin>
-                        <Insets right="50.0" />
+                        <Insets left="100.0" right="50.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" text="&lt;">
-                     <HBox.margin>
-                        <Insets right="50.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="49.0" text="0/0" textAlignment="CENTER">
+                  <Label fx:id="lbContadorCoche" alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="49.0" text="0/0" textAlignment="CENTER">
                      <HBox.margin>
                         <Insets right="50.0" />
                      </HBox.margin>
                   </Label>
-                  <Button mnemonicParsing="false" text="&gt;">
+                  <Button fx:id="btnSiguienteCoche" mnemonicParsing="false" onAction="#siguienteCoche" text="&gt;">
                      <HBox.margin>
                         <Insets right="50.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="60.0" text="Last &gt;|">
-                     <HBox.margin>
-                        <Insets />
                      </HBox.margin>
                   </Button>
                </children>
@@ -239,9 +229,9 @@
                   <Insets left="50.0" right="50.0" />
                </padding>
             </HBox>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="6.0" prefHeight="18.0" prefWidth="892.0" text="CAR" textAlignment="CENTER" textFill="#0000c8" underline="true">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="6.0" prefHeight="18.0" prefWidth="892.0" text="List of CARS" textAlignment="CENTER" textFill="#0000c8" underline="true">
                <font>
-                  <Font name="Arial Black" size="40.0" />
+                  <Font name="Arial Black" size="30.0" />
                </font>
             </Label>
             <Label fx:id="lbAvisoCoche" layoutX="74.0" layoutY="444.0" prefHeight="18.0" prefWidth="752.0">
